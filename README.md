@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jensgerntholtz/audioMash.svg?branch=master)]
+![Build Status](https://travis-ci.org/jensgerntholtz/audioMash.svg?branch=master)
 # audioMash
 A Python-based command-line-program that extracts audio from youtube videos and adjusts the listening experience
 
