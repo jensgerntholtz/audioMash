@@ -29,4 +29,4 @@ e.g. https://www.youtube.com/watch?v=ZZ5LpwO-An4
 # BUGS
 
 Entering options does not affect the outcome 
-\nThe title of the video may not contain a '/' or '\'
+The title of the video may not contain a '/' or '\'
