@@ -17,8 +17,10 @@ WARNING: Please be cautious when playing back the processed audio files. It will
 **DISCLAIMER I WE ARE NOT RESPOSIBLE FOR ANY DAMAGES CAUSED BY THIS SOFTWARE AS WELL AS THE PLAYBACK OF THE AUDIO FILES
 
 # INSTALLATION
+
 youtube-dl
 https://github.com/rg3/youtube-dl/blob/master/README.md#installation
+
 sox
 https://github.com/rabitt/pysox
 
@@ -28,5 +30,5 @@ e.g. https://www.youtube.com/watch?v=ZZ5LpwO-An4
 
 # BUGS
 
-Entering options does not affect the outcome 
+Entering options does not affect the outcome. 
 The title of the video may not contain a '/' or '\'
