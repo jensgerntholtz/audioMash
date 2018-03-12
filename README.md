@@ -1,11 +1,11 @@
-[![Build Status]'Pre-alpha']
+[![Build Status](https://travis-ci.org/jensgerntholtz/audioMash.svg?branch=master)]
 # audioMash
 A Python-based command-line-program that extracts audio from youtube videos and adjusts the listening experience
 
 - [DESCRIPTION](#description)
 - [INSTALLATION](#installation)
 - [USAGEGUIDE](#usageguide)
-- [BUGS]
+- [BUGS](#bugs)
 
 # DESCRIPTION
 audioMash is a tool for creators that contribute towards the meme internet culture. Specifically to automate the creation of "Ear rape" audio. "Ear rape" is a trend, in which the audio is modified in such a way that it sounds, terrible for comedic effect.
