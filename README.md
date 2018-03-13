@@ -14,7 +14,7 @@ audioMash runs using Python.
 
 WARNING: Please be cautious when playing back the processed audio files. It will damage your ears, as well as the playback device at a sufficient volume.
 
-**DISCLAIMER I WE ARE NOT RESPOSIBLE FOR ANY DAMAGES CAUSED BY THIS SOFTWARE AS WELL AS THE PLAYBACK OF THE AUDIO FILES
+**DISCLAIMER WE ARE NOT RESPOSIBLE FOR ANY DAMAGES CAUSED BY THIS SOFTWARE AS WELL AS THE PLAYBACK OF THE AUDIO FILES**
 
 # INSTALLATION
 
@@ -26,7 +26,7 @@ https://github.com/rabitt/pysox
 
 # USAGEGUIDE
 Paste your YouTube video link (standard playback format) in your command-line-interface
-e.g. https://www.youtube.com/watch?v=ZZ5LpwO-An4
+e.g. `https://www.youtube.com/watch?v=ZZ5LpwO-An4`
 
 # BUGS
 
