@@ -41,6 +41,13 @@ def download_audio():
 def process_audio(video_url,video_title):
     global file_name
     bass_boost_setting = raw_input('Please choose a bass boost magnitude: \n0:Moderate\n1:Strong\n2:TiniTerminate\n:')
+
+    options_bass_boost_setting =   {0 : bass_boost_magnitude=10,
+                                    1 : bass_boost_magnitude=20,
+                                    2 : bass_boost_magnitude=30,
+    }
+    options_bass_boost_choice[bass_boost_choice]()
+
     # options_bass_boost_setting = {
     #     '0' : bass_boost_magnitude=10,
     #     '1' : bass_boost_magnitude=20,
@@ -60,6 +67,10 @@ def process_audio(video_url,video_title):
     tfm.build(file_name+'.wav', video_title+'-AudioMashed'+'.wav')
     tfm.effects_log
 
+def rundown():
+    global file_name
+    os.remove(file_name+'.wav')
+
 video_url = ''
 video_title = ''
 file_name = ''
@@ -67,6 +78,12 @@ download_audio()
 process_audio(video_url,video_title)
 
 continuation = raw_input('Enter (0):\tAccept changes and exit.\nEnter (1):\tRevert changes and try a different bass boost magnitude\nEnter (2):\tAccept changes and process another song\n')
+options_continuation = {0 : rundown,
+                        1 : process_audio(video_url,video_title),
+                        2 : download_audio,
+}
+options_continuation[int(continuation)]()
+=======
 options_continuation = {
     # remove unprocessed file
     '0' : os.remove(file_name+'.wav'),
