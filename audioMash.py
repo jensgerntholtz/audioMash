@@ -41,7 +41,6 @@ def download_audio():
 def process_audio(video_url,video_title):
     global file_name
     bass_boost_setting = raw_input('Please choose a bass boost magnitude: \n0:Moderate\n1:Strong\n2:TiniTerminate\n:')
-
     options_bass_boost_setting =   {0 : bass_boost_magnitude=10,
                                     1 : bass_boost_magnitude=20,
                                     2 : bass_boost_magnitude=30,
