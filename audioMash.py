@@ -48,13 +48,6 @@ def process_audio(video_url,video_title):
     }
     options_bass_boost_choice[bass_boost_choice]()
 
-    # options_bass_boost_setting = {
-    #     '0' : bass_boost_magnitude=10,
-    #     '1' : bass_boost_magnitude=20,
-    #     '2' : bass_boost_magnitude=30,
-    # }
-    # options_bass_boost_choice[bass_boost_choice]()
-
     # creates a Transformer instance
     bass_boost_magnitude = 20
     tfm = sox.Transformer()
@@ -83,14 +76,6 @@ options_continuation = {0 : rundown,
                         2 : download_audio,
 }
 options_continuation[int(continuation)]()
-=======
-options_continuation = {
-    # remove unprocessed file
-    '0' : os.remove(file_name+'.wav'),
-    '1' : process_audio(video_url,video_title),
-    '2' : download_audio(),
-}
-options_continuation[continuation]()
 
 #convert webm to wav
 # ffmpeg -i "" -acodec pcm_s16le -ac 1 -ar 22050 ""
