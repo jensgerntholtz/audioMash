@@ -32,3 +32,7 @@ e.g. `https://www.youtube.com/watch?v=ZZ5LpwO-An4`
 
 Entering options does not affect the outcome. 
 The title of the video may not contain a '/' or '\'
+
+Selecting bassboost options does not impact outcome.
+
+Selecting option 1 & 2 at the end of the program cuases issues
