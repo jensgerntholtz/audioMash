@@ -55,7 +55,7 @@ def download_progress(d):
             sleep(0.15)
     else:
         # Clear the line 
-        print(" " * (len(download_msg)+9), end="\r") # Adding 8 because of the whitespace, percentage and the aniamated char
+        print(" " * (len(download_msg)+9), end="\r") # Adding 9 because of the whitespace, percentage and the aniamated char
         print("Download complete!")
 
 
