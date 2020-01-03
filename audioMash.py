@@ -1,27 +1,26 @@
-from __future__ import unicode_literals
-import youtube_dl
-#audio manipulator
-import sox
-import os
+#!/usr/bin/env python3
 
+from time import sleep
+from youtube_dl import YoutubeDL
+import sox
+
+
+# Log Object
 class state_logger(object):
     def debug(self, msg):
         pass
 
     def warning(self, msg):
-        pass
+        print(msg)
 
     def error(self, msg):
         print(msg)
 
 
-def my_hook(d):
-    if d['status'] == 'finished':
-        print('Download completed, now processing ...')
+# Functions
+def download_audio(video_url):
 
-def download_audio():
-    global video_url
-    global video_title
+    # Options for the YouTube Downloader
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -30,54 +29,57 @@ def download_audio():
             'preferredquality': '192',
         }],
         'logger': state_logger(),
-        'progress_hooks': [my_hook],
+        'progress_hooks': [download_progress]
     }
-    video_url = raw_input("Paste your YouTube video link in the standard format \ne.g. https://www.youtube.com/watch?v=ZZ5LpwO-An4 \n :")
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+
+    # Set this variables to be accessible for the entire script
+    global video_title, file_name
+
+    # Download audio
+    with YoutubeDL(ydl_opts) as ydl:
+        video_info = ydl.extract_info(video_url, download=False)
+        video_title = video_info.get('title', None)
+        video_id = video_info.get('display_id', None)
+        file_name = video_title + '-' + video_id + ".wav"
         ydl.download([video_url])
-        info_dict = ydl.extract_info(video_url, download=False)
-        video_title = info_dict.get('title', None)
 
-def process_audio(video_url,video_title):
-    global file_name
-    bass_boost_setting = raw_input('Please choose a bass boost magnitude: \n0:Moderate\n1:Strong\n2:TiniTerminate\n:')
-    options_bass_boost_setting =   {0 : bass_boost_magnitude=10,
-                                    1 : bass_boost_magnitude=20,
-                                    2 : bass_boost_magnitude=30,
-    }
-    options_bass_boost_choice[bass_boost_choice]()
 
-    # creates a Transformer instance
-    bass_boost_magnitude = 20
+def download_progress(d):
+    animation_chars = ["|", "/", "-", "\\"]
+    download_msg = f"Downloading \"{video_title}\""
+
+    # Display a download animation
+    if d['status'] != 'finished':
+        for i in range(len(animation_chars)):
+            print(f"{download_msg} {d['_percent_str']} {animation_chars[i]}", end="\r")
+            sleep(0.15)
+    else:
+        # Clear the line 
+        print(" " * (len(download_msg)+9), end="\r") # Adding 9 because of the whitespace, percentage and the aniamated char
+        print("Download complete!")
+
+
+def process_audio(file_name, bass_boost_magnitude):
+    # Warn the user if he choose a value of 100 or higher
+    if bass_boost_magnitude >= 100:
+        print("WARNING: Setting the bass_boost to a value of 100 or higher might produce damage to your ears/headphones")
+
+    # Create a Transformer instance
     tfm = sox.Transformer()
     tfm.bass(bass_boost_magnitude)
-    # compresses file
+
+    # Compress file
     tfm.compand()
-    pos = video_url.find('=')+1;
-    file_name = video_title+'-'+video_url[pos:]
-    # File input and output can't be the same name
-    tfm.build(file_name+'.wav', video_title+'-AudioMashed'+'.wav')
+
+    # Save the ear rape audio
+    output_file = file_name.replace(".wav", "-earrape.wav")
+    tfm.build(file_name, output_file)
     tfm.effects_log
 
-def rundown():
-    global file_name
-    os.remove(file_name+'.wav')
 
-video_url = ''
-video_title = ''
-file_name = ''
-download_audio()
-process_audio(video_url,video_title)
-
-continuation = raw_input('Enter (0):\tAccept changes and exit.\nEnter (1):\tRevert changes and try a different bass boost magnitude\nEnter (2):\tAccept changes and process another song\n')
-options_continuation = {0 : rundown,
-                        1 : process_audio(video_url,video_title),
-                        2 : download_audio,
-}
-options_continuation[int(continuation)]()
-
-#convert webm to wav
-# ffmpeg -i "" -acodec pcm_s16le -ac 1 -ar 22050 ""
-#
-# #sox only supports wav
-# /usr/local/bin/sox-14.4.2/sox -v 4.0 "" -r 16k "" treble +50 bass +50 treble +50
+video_url = input("Paste a YouTube url (e.g https://www.youtube.com/watch?v=ZZ5LpwO-An4) -> ")
+bass_boost = int(input("Set the bass_boost (0-100) -> "))
+download_audio(video_url)
+print(f"Processing \"{video_title}\"...")
+process_audio(file_name, bass_boost)
+print("Complete!")
