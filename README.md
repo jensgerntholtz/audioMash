@@ -8,7 +8,7 @@ A Python-based command-line-program that extracts audio from youtube videos and 
 - [BUGS](#bugs)
 
 # DESCRIPTION
-audioMash is a tool for creators that contribute towards the meme internet culture. Specifically to automate the creation of "Ear rape" audio. "Ear rape" is a trend, in which the audio is modified in such a way that it sounds, terrible for comedic effect.
+audioMash is a tool for creators that contribute towards the meme internet culture. Specifically to automate the creation of "Ear mash" audio. "Ear mash" is a trend, in which the audio is modified in such a way that it sounds, terrible for comedic effect.
 
 audioMash runs using Python.
 
